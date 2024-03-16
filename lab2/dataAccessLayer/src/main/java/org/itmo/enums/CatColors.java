@@ -1,4 +1,4 @@
-package org.itmo.pojo;
+package org.itmo.enums;
 
 public enum CatColors {
     Black,

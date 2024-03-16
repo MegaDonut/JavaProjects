@@ -27,7 +27,12 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>6.4.4.Final</version>
-            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
@@ -46,7 +51,7 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>10.9.1</version>
                 <configuration>
-                    <url>jdbc:postgresql://localhost:5432/postgres</url>
+                    <url>jdbc:postgresql://localhost:1337/postgres</url>
                     <user>postgres</user>
                     <password>1234</password>
                 </configuration>
