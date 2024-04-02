@@ -15,12 +15,12 @@ import java.util.Date;
 public class CatService {
     final CatDao catDao;
     final MasterDao masterDao;
-    public void create(String name, Date birthday, CatBreed breed, CatColors colors, Integer masterId) {
+    public Cat create(String name, Date birthday, CatBreed breed, CatColors colors, Integer masterId) {
         Session session = SessionFactoryUtil.getSessionFactory().openSession();
-
+        Cat cat = null;
         try {
             Transaction transaction = session.beginTransaction();
-            Cat cat = new Cat();
+            cat = new Cat();
             cat.setName(name);
             cat.setColors(colors);
             cat.setBirthday(birthday);
@@ -33,6 +33,8 @@ public class CatService {
         } finally {
             session.close();
         }
+
+        return cat;
     }
     public Cat show(Integer catId) {
         Session session = SessionFactoryUtil.getSessionFactory().openSession();
