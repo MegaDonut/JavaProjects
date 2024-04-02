@@ -3,7 +3,6 @@ package org.itmo.services;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.itmo.dao.CatDao;
 import org.itmo.dao.MasterDao;
 import org.itmo.pojo.Master;
 import org.itmo.util.SessionFactoryUtil;
@@ -12,7 +11,6 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class MasterService {
     final MasterDao masterDao;
-    final CatDao catDao;
 
     public void create(Date birthday, String name) {
         Session session = SessionFactoryUtil.getSessionFactory().openSession();
