@@ -15,6 +15,7 @@ public class Master {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Date birthday;
+    private String name;
 
     @OneToMany(mappedBy = "master", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private Set<Cat> cats = new LinkedHashSet<>();

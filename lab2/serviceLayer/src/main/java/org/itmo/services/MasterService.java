@@ -14,13 +14,14 @@ public class MasterService {
     final MasterDao masterDao;
     final CatDao catDao;
 
-    public void create(Date birthday) {
+    public void create(Date birthday, String name) {
         Session session = SessionFactoryUtil.getSessionFactory().openSession();
 
         try {
             Transaction transaction = session.beginTransaction();
             Master master = new Master();
             master.setBirthday(birthday);
+            master.setName(name);
             masterDao.save(master, session);
             transaction.commit();
         } catch (Exception e) {
