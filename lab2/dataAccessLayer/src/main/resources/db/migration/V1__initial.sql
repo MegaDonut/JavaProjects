@@ -12,7 +12,8 @@ CREATE TABLE cat
 CREATE TABLE cat_cats
 (
     cat_1_id  INTEGER NOT NULL,
-    cats_2_id INTEGER NOT NULL
+    cats_2_id INTEGER NOT NULL,
+    CONSTRAINT pk_cat_cats PRIMARY KEY (cat_1_id, cats_2_id)
 );
 
 CREATE TABLE master
