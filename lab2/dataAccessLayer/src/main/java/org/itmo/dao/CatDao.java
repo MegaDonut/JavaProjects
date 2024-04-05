@@ -5,8 +5,8 @@ import org.itmo.pojo.Cat;
 
 public class CatDao {
 
-    public void save(Cat cat, Session session) {
-        session.merge(cat);
+    public Cat save(Cat cat, Session session) {
+        return session.merge(cat);
     }
 
     public Cat findById(Integer id, Session session) {

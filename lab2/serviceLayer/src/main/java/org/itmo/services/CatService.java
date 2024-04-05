@@ -11,6 +11,7 @@ import org.itmo.pojo.Cat;
 import org.itmo.util.SessionFactoryUtil;
 
 import java.util.Date;
+
 @RequiredArgsConstructor
 public class CatService {
     final CatDao catDao;
@@ -26,7 +27,7 @@ public class CatService {
             cat.setBirthday(birthday);
             cat.setBreed(breed);
             cat.setMaster(masterDao.findById(masterId, session));
-            catDao.save(cat, session);
+            cat = catDao.save(cat, session);
             transaction.commit();
         } catch (Exception e) {
             session.getTransaction().rollback();

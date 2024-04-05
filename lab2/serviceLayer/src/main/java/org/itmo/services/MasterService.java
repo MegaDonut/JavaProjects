@@ -8,6 +8,7 @@ import org.itmo.pojo.Master;
 import org.itmo.util.SessionFactoryUtil;
 
 import java.util.Date;
+
 @RequiredArgsConstructor
 public class MasterService {
     final MasterDao masterDao;
@@ -20,7 +21,7 @@ public class MasterService {
             master = new Master();
             master.setBirthday(birthday);
             master.setName(name);
-            masterDao.save(master, session);
+            master = masterDao.save(master, session);
             transaction.commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
