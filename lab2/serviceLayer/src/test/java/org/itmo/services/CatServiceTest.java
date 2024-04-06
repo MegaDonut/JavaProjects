@@ -85,5 +85,4 @@ class CatServiceTest {
         masterService.delete(masterS.getId());
         catService.delete(cat.getId());
     }
-
 }
