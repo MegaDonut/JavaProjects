@@ -49,7 +49,7 @@ public class Cat {
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
         Cat cat = (Cat) o;
-        return getId() != null && Objects.equals(getId(), cat.getId());
+        return Objects.equals(getId(), cat.getId());
     }
 
     @Override

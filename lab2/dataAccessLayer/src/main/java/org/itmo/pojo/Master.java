@@ -28,7 +28,7 @@ public class Master {
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
         Master master = (Master) o;
-        return getId() != null && Objects.equals(getId(), master.getId());
+        return Objects.equals(getId(), master.getId());
     }
 
     @Override
