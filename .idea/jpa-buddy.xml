@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JpaBuddyIdeaProjectConfig">
+    <option name="sourceDiffType" value="DB" />
     <option name="defaultUnitInitialized" value="true" />
     <option name="renamerInitialized" value="true" />
+    <option name="sourceDbValue" value="a49a95c7-c2c3-4802-a375-c1baf8ccaacc" />
+    <option name="targetDbValue" value="a49a95c7-c2c3-4802-a375-c1baf8ccaacc" />
   </component>
 </project>
