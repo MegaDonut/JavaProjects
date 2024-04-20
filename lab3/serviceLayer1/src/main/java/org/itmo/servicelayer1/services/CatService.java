@@ -1,28 +1,26 @@
 package org.itmo.servicelayer1.services;
 
 import lombok.RequiredArgsConstructor;
-import org.itmo.dataaccesslayer1.enums.CatBreed;
-import org.itmo.dataaccesslayer1.enums.CatColors;
 import org.itmo.dataaccesslayer1.pojo.Cat;
 import org.itmo.dataaccesslayer1.repositories.CatRepository;
 import org.itmo.dataaccesslayer1.repositories.MasterRepository;
+import org.itmo.servicelayer1.services.model.ChangeMasterRequest;
+import org.itmo.servicelayer1.services.model.CreateCatRequest;
+import org.itmo.servicelayer1.services.model.SetUnsetFriendshipRequest;
 import org.springframework.stereotype.Service;
-
-
-import java.util.Date;
 
 @Service
 @RequiredArgsConstructor
 public class CatService {
     private final CatRepository catRepository;
     private final MasterRepository masterRepository;
-    public Cat create(String name, Date birthday, CatBreed breed, CatColors colors, Integer masterId) {
+    public Cat create(CreateCatRequest request) {
         Cat cat = new Cat();
-        cat.setName(name);
-        cat.setBirthday(birthday);
-        cat.setBreed(breed);
-        cat.setColors(colors);
-        cat.setMaster(masterRepository.findMasterById(masterId));
+        cat.setName(request.getName());
+        cat.setBirthday(request.getBirthday());
+        cat.setBreed(request.getBreed());
+        cat.setColors(request.getColor());
+        cat.setMaster(masterRepository.findMasterById(request.getMasterId()));
         cat = catRepository.save(cat);
         return cat;
     }
@@ -30,25 +28,25 @@ public class CatService {
         return catRepository.findCatById(catId);
     }
 
-    public void setFriends(Integer catIdFirst, Integer catIdSecond) {
-        Cat catFirst = catRepository.findCatById(catIdFirst);
-        Cat catSecond = catRepository.findCatById(catIdSecond);
+    public void setFriends(SetUnsetFriendshipRequest request) {
+        Cat catFirst = catRepository.findCatById(request.getCatIdFirst());
+        Cat catSecond = catRepository.findCatById(request.getCatIdSecond());
         catFirst.getCats().add(catSecond);
         catSecond.getCats().add(catFirst);
         catRepository.save(catFirst);
     }
 
-    public void deleteFriendship(Integer catIdFirst, Integer catIdSecond) {
-        Cat catFirst = catRepository.findCatById(catIdFirst);
-        Cat catSecond = catRepository.findCatById(catIdSecond);
+    public void deleteFriendship(SetUnsetFriendshipRequest request) {
+        Cat catFirst = catRepository.findCatById(request.getCatIdFirst());
+        Cat catSecond = catRepository.findCatById(request.getCatIdSecond());
         catFirst.getCats().remove(catSecond);
         catSecond.getCats().remove(catFirst);
         catRepository.save(catFirst);
     }
 
-    public void changeMaster(Integer catId, Integer newMasterId) {
-        Cat cat = catRepository.findCatById(catId);
-        cat.setMaster(masterRepository.findMasterById(newMasterId));
+    public void changeMaster(ChangeMasterRequest request) {
+        Cat cat = catRepository.findCatById(request.getCatId());
+        cat.setMaster(masterRepository.findMasterById(request.getNewMasterId()));
         catRepository.save(cat);
     }
 

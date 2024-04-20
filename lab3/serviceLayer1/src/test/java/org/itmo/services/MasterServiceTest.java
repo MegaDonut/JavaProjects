@@ -3,6 +3,7 @@ package org.itmo.services;
 import org.itmo.dataaccesslayer1.pojo.Master;
 import org.itmo.dataaccesslayer1.repositories.MasterRepository;
 import org.itmo.servicelayer1.services.MasterService;
+import org.itmo.servicelayer1.services.model.CreateMasterRequest;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
@@ -27,7 +28,11 @@ class MasterServiceTest {
         when(mockedMasterRepo.save(masterN)).thenReturn(masterId);
         MasterService masterService = new MasterService(mockedMasterRepo);
 
-        Master master = masterService.create(new Date(1), "bob");
+        CreateMasterRequest request = CreateMasterRequest.builder()
+                .birthday(new Date(1))
+                .name("bob")
+                .build();
+        Master master = masterService.create(request);
         verify(mockedMasterRepo).save(masterN);
         assertEquals(masterId, master);
     }

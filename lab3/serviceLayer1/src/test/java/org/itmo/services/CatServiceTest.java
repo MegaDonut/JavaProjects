@@ -8,6 +8,8 @@ import org.itmo.dataaccesslayer1.pojo.Master;
 import org.itmo.dataaccesslayer1.repositories.CatRepository;
 import org.itmo.dataaccesslayer1.repositories.MasterRepository;
 import org.itmo.servicelayer1.services.CatService;
+import org.itmo.servicelayer1.services.model.CreateCatRequest;
+import org.itmo.servicelayer1.services.model.SetUnsetFriendshipRequest;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
@@ -30,22 +32,29 @@ class CatServiceTest {
 
         Cat catN = new Cat();
         catN.setMaster(master);
-        catN.setColors(CatColors.black);
-        catN.setBreed(CatBreed.britain);
+        catN.setColors(CatColors.BLACK);
+        catN.setBreed(CatBreed.BRITAIN);
         catN.setName("tiger");
         catN.setBirthday(new Date(1));
 
         Cat catId = new Cat();
         catId.setMaster(master);
-        catId.setColors(CatColors.black);
-        catId.setBreed(CatBreed.britain);
+        catId.setColors(CatColors.BLACK);
+        catId.setBreed(CatBreed.BRITAIN);
         catId.setName("tiger");
         catId.setBirthday(new Date(1));
         catId.setId(1);
 
         when(mockedCatRepo.save(catN)).thenReturn(catId);
+        CreateCatRequest request = CreateCatRequest.builder()
+                .name("tiger")
+                .birthday(new Date(1))
+                .breed(CatBreed.BRITAIN)
+                .color(CatColors.BLACK)
+                .masterId(1)
+                .build();
 
-        Cat cat = catService.create("tiger", new Date(1), CatBreed.britain, CatColors.black, 1);
+        Cat cat = catService.create(request);
         verify(mockedCatRepo).save(catN);
         assertEquals(cat, catId);
     }
@@ -65,23 +74,24 @@ class CatServiceTest {
         Cat catF = spy(new Cat());
         catF.setId(1);
         catF.setMaster(master);
-        catF.setColors(CatColors.black);
-        catF.setBreed(CatBreed.britain);
+        catF.setColors(CatColors.BLACK);
+        catF.setBreed(CatBreed.BRITAIN);
         catF.setName("tiger");
         catF.setBirthday(new Date(1));
 
         Cat catS = spy(new Cat());
         catS.setId(2);
         catS.setMaster(master);
-        catS.setColors(CatColors.black);
-        catS.setBreed(CatBreed.britain);
+        catS.setColors(CatColors.BLACK);
+        catS.setBreed(CatBreed.BRITAIN);
         catS.setName("tiger");
         catS.setBirthday(new Date(1));
 
         when(mockedCatRepo.findCatById(1)).thenReturn(catF);
         when(mockedCatRepo.findCatById(2)).thenReturn(catS);
 
-        catService.setFriends(catF.getId(), catS.getId());
+        SetUnsetFriendshipRequest request = SetUnsetFriendshipRequest.builder().catIdFirst(1).catIdSecond(2).build();
+        catService.setFriends(request);
         verify(catF).getCats();
         verify(catS).getCats();
 
@@ -104,16 +114,16 @@ class CatServiceTest {
         Cat catF = spy(new Cat());
         catF.setId(1);
         catF.setMaster(master);
-        catF.setColors(CatColors.black);
-        catF.setBreed(CatBreed.britain);
+        catF.setColors(CatColors.BLACK);
+        catF.setBreed(CatBreed.BRITAIN);
         catF.setName("tiger");
         catF.setBirthday(new Date(1));
 
         Cat catS = spy(new Cat());
         catS.setId(2);
         catS.setMaster(master);
-        catS.setColors(CatColors.black);
-        catS.setBreed(CatBreed.britain);
+        catS.setColors(CatColors.BLACK);
+        catS.setBreed(CatBreed.BRITAIN);
         catS.setName("tiger");
         catS.setBirthday(new Date(1));
         catS.getCats().add(catF);
@@ -122,8 +132,8 @@ class CatServiceTest {
 
         when(mockedCatRepo.findCatById(1)).thenReturn(catF);
         when(mockedCatRepo.findCatById(2)).thenReturn(catS);
-
-        catService.deleteFriendship(1, 2);
+        SetUnsetFriendshipRequest request = SetUnsetFriendshipRequest.builder().catIdFirst(1).catIdSecond(2).build();
+        catService.deleteFriendship(request);
 
         assertNotEquals(catF.getCats().size(), 1);
         assertNotEquals(catS.getCats().size(), 1);

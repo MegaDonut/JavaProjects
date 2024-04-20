@@ -1,4 +1,4 @@
-package org.itmo.application1.model;
+package org.itmo.servicelayer1.services.model;
 
 import lombok.Builder;
 import lombok.Getter;

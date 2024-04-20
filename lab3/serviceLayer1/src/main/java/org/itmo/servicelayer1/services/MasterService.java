@@ -3,6 +3,7 @@ package org.itmo.servicelayer1.services;
 import lombok.RequiredArgsConstructor;
 import org.itmo.dataaccesslayer1.pojo.Master;
 import org.itmo.dataaccesslayer1.repositories.MasterRepository;
+import org.itmo.servicelayer1.services.model.CreateMasterRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -12,10 +13,10 @@ import java.util.Date;
 public class MasterService {
     private final MasterRepository masterRepository;
 
-    public Master create(Date birthday, String name) {
+    public Master create(CreateMasterRequest request) {
         Master master = new Master();
-        master.setBirthday(birthday);
-        master.setName(name);
+        master.setBirthday(request.getBirthday());
+        master.setName(request.getName());
         master = masterRepository.save(master);
         return master;
     }
