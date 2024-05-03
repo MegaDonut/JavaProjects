@@ -32,6 +32,9 @@ public class WebSecurityConfig {
                 .sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(request -> request
+                        .requestMatchers("/cat/*").authenticated()
+                        .requestMatchers("/master/create").hasAuthority("ADMIN")
+                        .requestMatchers("/user/*").hasAuthority("ADMIN")
                         .anyRequest().authenticated())
                 .userDetailsService(service)
                 .build();

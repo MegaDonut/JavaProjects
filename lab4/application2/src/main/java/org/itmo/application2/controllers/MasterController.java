@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class MasterController {
     private final MasterService masterService;
     private final Mapper mapper;
+
     @PostMapping("/create")
     public CreateShowMasterResponse createMaster(@RequestBody CreateMasterRequest request) {
         Master master = masterService.create(request);

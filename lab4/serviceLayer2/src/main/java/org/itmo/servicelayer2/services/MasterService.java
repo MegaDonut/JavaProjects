@@ -19,14 +19,14 @@ public class MasterService {
         master.setBirthday(request.getBirthday());
         master.setName(request.getName());
 
-        CreateUserRequest request1 = CreateUserRequest.builder()
+        CreateUserRequest newRequest = CreateUserRequest.builder()
                 .login(request.getLogin())
                 .password(request.getPassword())
                 .role(request.getRole())
                 .master(master)
                 .build();
 
-        User user = service.createUser(request1);
+        User user = service.createUser(newRequest);
         master.setUser(user);
 
         master = masterRepository.save(master);
