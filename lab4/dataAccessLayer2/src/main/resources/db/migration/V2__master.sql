@@ -1,0 +1,2 @@
+ALTER TABLE master
+    ADD name VARCHAR(255);
