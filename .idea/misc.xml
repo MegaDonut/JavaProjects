@@ -6,6 +6,11 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/lab1/pom.xml" />
+
+        <option value="$PROJECT_DIR$/lab3/dataAccessLayer1/pom.xml" />
+        <option value="$PROJECT_DIR$/lab3/serviceLayer1/pom.xml" />
+        <option value="$PROJECT_DIR$/lab3/application1/pom.xml" />
+
         <option value="$PROJECT_DIR$/lab4/application2/pom.xml" />
         <option value="$PROJECT_DIR$/lab4/serviceLayer2/pom.xml" />
         <option value="$PROJECT_DIR$/lab4/dataAccessLayer2/pom.xml" />
