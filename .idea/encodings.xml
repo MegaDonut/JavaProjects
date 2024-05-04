@@ -3,6 +3,10 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/lab1/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lab1/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lab2/dataAccessLayer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lab2/dataAccessLayer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lab2/serviceLayer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lab2/serviceLayer/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lab2/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lab2/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lab3/application1/src/main/java" charset="UTF-8" />
@@ -10,6 +14,9 @@
     <file url="file://$PROJECT_DIR$/lab3/serviceLayer1/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lab3/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lab3/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lab4/application2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lab4/dataAccessLayer2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lab4/serviceLayer2/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lab4/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lab4/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lab5/src/main/java" charset="UTF-8" />
