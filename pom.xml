@@ -14,7 +14,12 @@
         <module>lab3</module>
         <module>lab4</module>
         <module>lab5</module>
+        <module>lab2/serviceLayer</module>
     </modules>
+
+    <dependencies>
+
+    </dependencies>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
